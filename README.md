@@ -5,8 +5,15 @@ Choose-Work-Randomly is a script to choose random Work from my stack of todos wr
 
 ## How it works
 
-At the moment it only works for my xubuntu virtual machine. It steps 1 directory up and from there
-thinks that the directories are the repositories I currently work on.
-It will choose a random file and prompt me to work on it or
-to add new todo items.
+  - the script looks for a configuration which is in a Todo-Directory just outside its own repository directory
+
+  - it lists the files within that directory, at least the ones ending with .txt
+
+  - the files have a certain naming convention: number_somename_[shellcmd].txt_.
+
+    - the number is how often the file is placed in the random array, so the higher the number the higher the probability that it gets choosen.
+    - when a file gets choosen:
+        - if the file ends with shellcmd then the contents of the file are read and executed 
+        - if the file does not end with shellcmd then its content is read and a line is choosen randomly
+
 
