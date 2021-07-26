@@ -16,13 +16,19 @@ $filesNTimes = $files | Foreach-Object {
     }
 }
 
-$randomlyChoosenFile = $filesNTimes | Get-Random
-$content = Get-Content $randomlyChoosenFile
+1..10 | Foreach-Object {
+    Write-Host $_
+    Write-Host ""
+    $randomlyChoosenFile = $filesNTimes | Get-Random
+    $content = Get-Content $randomlyChoosenFile
 
-if ( $randomlyChoosenFile.Contains("shellcmd") ) {
-    Invoke-Expression $content 
-} else {
-    Write-Host $content
+    if ( $randomlyChoosenFile.Contains("shellcmd") ) {
+        Invoke-Expression $content 
+    } else {
+        Write-Host $content
+    }
+
+    Set-Location $PSScriptRoot/../Todo
 }
 
 Set-Location $PSScriptRoot
